@@ -75,17 +75,15 @@ https://github.com/esride-nik/ExB-workshop/blob/master/widgets/excelExport/src/d
 # Message Action
 ### Trigger an action
 
-You can look at the same data source from several widgets throughout your app, but it takes some extra action to also share a selection programmatically applied on an map layer.
+A widget can implement a piece of action, that is triggered by another widget. The action itself is configurable. While the config menu of the action is implemented in the widget implementing the action, it shows up in the backend of the widget, that triggers the action.
 
-Here's a sample using this approach: ['Alternative select'](https://github.com/esride-nik/ExB-workshop/tree/master/widgets/alternativeSelect). It uses Sketch to draw a graphic on the map and a slider to define a buffer around it. As it is connected to a FeatureLayer datasource on a web map,
-* is selects all features contained in the buffer and
-* makes the selection available for other widgets looking at the same datasource.
+Here's a sample using this approach: ['Message subscriber'](https://github.com/Esri/arcgis-experience-builder-sdk-resources/tree/master/widgets/message-subscriber).
 
-![](./assets/DataSourceManager.gif)
+![](./assets/MessageAction.gif)
 
 ### The crucial point
 
-Use the ``DataSourceComponent`` to catch the FeatureLayer datasource in the widget code. Then query the FeatureLayerView for the ObjectIDs of the widgets within the buffer and pushes them into the DataSourceManager via ``featureLayerDatSource.selectRecordsByIds()``.
+Use an ``appAction`` imported from the jimu framework to dispatch a ``widgetStatePropChange`` action along with the widgetId and the configured parameter via the global AppStore.
 
 Like here:
 https://github.com/esride-nik/ExB-workshop/blob/master/widgets/alternativeSelect/src/runtime/widget.tsx#L79
