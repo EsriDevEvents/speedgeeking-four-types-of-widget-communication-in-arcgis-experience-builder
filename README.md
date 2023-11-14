@@ -1,7 +1,7 @@
 ## Speedgeeking at European DevSummit Berlin 2023: 
 # Four types of widget communication in ArcGIS Experience Builder
 
-![](./assets/4types.png)
+![](./assets/4Types.png)
 
 
 ---
