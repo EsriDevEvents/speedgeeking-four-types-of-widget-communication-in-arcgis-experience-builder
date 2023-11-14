@@ -43,3 +43,49 @@ Use the ``DataSourceComponent`` to catch the FeatureLayer datasource in the widg
 
 Like here:
 https://github.com/esride-nik/ExB-workshop/blob/master/widgets/alternativeSelect/src/runtime/widget.tsx#L79
+
+
+---
+
+
+![](./assets/Actions.png)
+
+---
+
+# Data Action
+### Send a data object
+
+The data action takes a data object and sends it to another widget.
+
+Here's a sample using this approach: ['Excel export'](https://github.com/esride-nik/ExB-workshop/tree/master/widgets/excelExport). The data implemented by the widget that wants to receive the data. If activated in another widget's backend, it show a up as a button in the actions menu. If clickt, it sends out the data.
+
+![](./assets/DataAction.gif)
+
+### The crucial point
+
+.getInstance().updateStateValue(
+
+Use an instance of ``MutableStoreManager`` and ``updateStateValue()`` with the data that is to be sent.
+
+Like here:
+https://github.com/esride-nik/ExB-workshop/blob/master/widgets/excelExport/src/data-actions/excel-export.ts#L13
+
+---
+
+# Message Action
+### Trigger an action
+
+You can look at the same data source from several widgets throughout your app, but it takes some extra action to also share a selection programmatically applied on an map layer.
+
+Here's a sample using this approach: ['Alternative select'](https://github.com/esride-nik/ExB-workshop/tree/master/widgets/alternativeSelect). It uses Sketch to draw a graphic on the map and a slider to define a buffer around it. As it is connected to a FeatureLayer datasource on a web map,
+* is selects all features contained in the buffer and
+* makes the selection available for other widgets looking at the same datasource.
+
+![](./assets/DataSourceManager.gif)
+
+### The crucial point
+
+Use the ``DataSourceComponent`` to catch the FeatureLayer datasource in the widget code. Then query the FeatureLayerView for the ObjectIDs of the widgets within the buffer and pushes them into the DataSourceManager via ``featureLayerDatSource.selectRecordsByIds()``.
+
+Like here:
+https://github.com/esride-nik/ExB-workshop/blob/master/widgets/alternativeSelect/src/runtime/widget.tsx#L79
