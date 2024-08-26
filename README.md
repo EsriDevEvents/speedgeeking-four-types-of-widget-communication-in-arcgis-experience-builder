@@ -42,7 +42,7 @@ Here's a sample using this approach: ['Alternative select'](https://github.com/e
 Use the ``DataSourceComponent`` to catch the FeatureLayer datasource in the widget code. Then query the FeatureLayerView for the ObjectIDs of the widgets within the buffer and pushes them into the DataSourceManager via ``featureLayerDatSource.selectRecordsByIds()``.
 
 Like here:
-https://github.com/esride-nik/ExB-workshop/blob/master/widgets/alternativeSelect/src/runtime/widget.tsx#L79
+https://github.com/esride-nik/ExB-workshop/blob/master/widgets/alternativeSelect/src/runtime/widget.tsx#L81
 
 
 ---
@@ -68,7 +68,7 @@ Here's a sample using this approach: ['Excel export'](https://github.com/esride-
 Use an instance of ``MutableStoreManager`` and ``updateStateValue()`` with the data that is to be sent.
 
 Like here:
-https://github.com/esride-nik/ExB-workshop/blob/master/widgets/excelExport/src/data-actions/excel-export.ts#L13
+https://github.com/esride-nik/ExB-workshop/blob/master/widgets/excelExport/src/data-actions/excel-export.ts#L17
 
 ---
 
@@ -86,4 +86,4 @@ Here's a sample using this approach: ['Message subscriber'](https://github.com/E
 Use an ``appAction`` imported from the jimu framework to dispatch a ``widgetStatePropChange`` action along with the widgetId and the configured parameter via the global AppStore.
 
 Like here:
-https://github.com/esride-nik/ExB-workshop/blob/master/widgets/alternativeSelect/src/runtime/widget.tsx#L79
+https://github.com/Esri/arcgis-experience-builder-sdk-resources/blob/master/widgets/message-subscriber/src/actions/query-action.ts#L29
